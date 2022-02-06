@@ -1,0 +1,68 @@
+---
+title: "607wk1hw"
+author: "Jay Lee"
+date: "2/5/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# week 1 assignment
+
+# Loading the data
+
+```{r Read data, echo=TRUE}
+
+#upload the text file to github
+
+library(tidyverse) 
+library(dplyr)
+library(stringr) 
+library(rvest)
+library(lubridate)
+
+urlfile <-'https://raw.githubusercontent.com/jayleecunysps/AssignmentforSPS/main/week1hw.txt' 
+
+fulldata <-read_lines(url(urlfile),skip =1)
+
+```
+
+# Pulling out the useful row and remove the ---- line
+
+```{r echo=TRUE}
+
+#take all the data beside------ line
+player_data1 <- fulldata[seq(4,length(fulldata),3)]
+player_data2 <- fulldata[seq(5,length(fulldata),3)]
+
+
+```
+
+# Pulling out the useful data
+
+```{r}
+Playername <- str_extract(player_data1,'[A-z].{1,27}') #A-z first first 27 char
+Playername <- as.character(str_replace_all(Playername,"-","")) #remove the -
+Playername <- str_trim(str_extract(Playername, '.+\\s{2,}')) #remove space
+State <- str_extract(player_data2, '[A-Z]{2}') #pick the all cap with max of 2 
+Total_Num_of_Points <- as.numeric(str_extract(player_data1,'\\d+\\.\\d')) #number.number
+Pre_rating <- str_extract(player_data2,'R:.{8,}->')
+Pre_rating <- as.numeric(str_extract(Pre_rating,'\\d{1,4}')) #only number and just 4 digit
+avg_chess <- unlist(str_extract_all(player_data1, "\\|[0-9].*"))
+avg_chess <- str_replace_all(avg_chess, "\\s{1,2}\\|","00|")
+avg_chess <- str_extract_all(avg_chess, "\\s\\d{1,2}")
+avgoppprechessrating <- c()
+for (i in c(1:length(avg_chess)))
+{
+  avgoppprechessrating[i] <- round(mean(Pre_rating[as.numeric(avg_chess[[i]])]),0)
+}
+avgoppprechessrating
+```
+```{r}
+Newdata <- data.frame(Playername,State,Total_Num_of_Points,Pre_rating,avgoppprechessrating)
+Newdata
+write_csv(Newdata, "tournament.csv", append = FALSE)
+```
+
