@@ -1,5 +1,5 @@
 ---
-title: "607wk1hw"
+title: "607 Project 1"
 author: "Jay Lee"
 date: "2/5/2022"
 output: html_document
@@ -17,15 +17,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #upload the text file to github
 
+#load the packages
+
 library(tidyverse) 
 library(dplyr)
 library(stringr) 
 library(rvest)
 library(lubridate)
 
+#upload the text file to github and download back for this project
 urlfile <-'https://raw.githubusercontent.com/jayleecunysps/AssignmentforSPS/main/week1hw.txt' 
 
-fulldata <-read_lines(url(urlfile),skip =1)
+fulldata <-read_lines(url(urlfile),skip =1) #remove the first line 1
+
 
 ```
 
@@ -34,8 +38,8 @@ fulldata <-read_lines(url(urlfile),skip =1)
 ```{r echo=TRUE}
 
 #take all the data beside------ line
-player_data1 <- fulldata[seq(4,length(fulldata),3)]
-player_data2 <- fulldata[seq(5,length(fulldata),3)]
+player_data1 <- fulldata[seq(4,length(fulldata),3)] #start from line 4, get every 3 lines
+player_data2 <- fulldata[seq(5,length(fulldata),3)] #start from line 5, get every 3 lines
 
 
 ```
@@ -62,6 +66,7 @@ avgoppprechessrating
 ```
 ```{r}
 Newdata <- data.frame(Playername,State,Total_Num_of_Points,Pre_rating,avgoppprechessrating)
+#join all the code i worte back to one.
 Newdata
 write_csv(Newdata, "tournament.csv", append = FALSE)
 ```
