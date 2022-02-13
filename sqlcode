@@ -1,6 +1,10 @@
+--Step 1: Delete the table in case it has one before!
+
 DROP TABLE movies;
 DROP TABLE friends;
 DROP TABLE review;
+
+--Step 2:Create table
 
 CREATE TABLE movies
 (
@@ -21,6 +25,9 @@ CREATE TABLE review
 	ranking int
 );
 
+--Step 3: Insert data in 2 different ways
+
+--way 1
 insert into movies(movie_name) VALUES ('SpiderMan');
 insert into movies(movie_name) VALUES ('Sing2');
 insert into movies(movie_name) VALUES ('Uncharted');
@@ -34,14 +41,15 @@ insert into friends(friends_name) VALUES ('Daisy');
 insert into friends(friends_name) VALUES ('Mike');
 insert into friends(friends_name) VALUES ('Greg')
 
+--way2
 COPY review (movie_id,friends_id,ranking)
 from '/Users/jaylee/607wk2hw/moviedata.csv'
 delimiter ','
 csv header;
 
+--final step: join the result together for R use
 CREATE TABLE movieresult as
 SELECT review.*,movies.movie_name,friends.friends_name
 FROM review
 	left join movies on movies.movie_id = review.movie_id
 	left join friends on friends.friends_id = review.friends_id
-
