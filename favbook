@@ -1,0 +1,33 @@
+<html>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Pages</th>
+            <th>Language</th>
+        </tr>
+        <tr>
+            <th>Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming</th>
+            <th>Eric Matthes</th>
+            <th>No Starch Press</th>
+            <th>544</th>
+            <th>English</th>
+        </tr>
+        <tr>
+            <th>Python Data Science Handbook: Essential Tools for Working with Data</th>
+            <th>Jake VanderPlas</th>
+            <th>O'Reilly Media</th>
+            <th>548</th>
+            <th>English</th>
+        </tr>
+        <tr>
+            <th>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</th>
+            <th>Hadley Wickham, Garrett Grolemund </th>
+            <th>O'Reilly Media</th>
+            <th>520</th>
+            <th>English</th>
+        </tr>
+  
+    </table>
+</html>
