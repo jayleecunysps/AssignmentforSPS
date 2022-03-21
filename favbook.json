@@ -1,0 +1,25 @@
+{
+    "favbook": [
+        {
+            "Title": "Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming",
+            "Author": "Eric Matthes",
+            "Publisher": "No Starch Press"
+            "Pages": "544"   
+            "Language": "English"   
+        },
+        {
+            "Title": "Python Data Science Handbook: Essential Tools for Working with Data",
+            "Author": "Jake VanderPlas",
+            "Publisher": "O'Reilly Media"
+            "Pages": "548"   
+            "Language": "English"   
+},
+{
+            "Title": "R for Data Science: Import, Tidy, Transform, Visualize, and Model Data",
+            "Author": "Hadley Wickham, Garrett Grolemund",
+            "Publisher": "O'Reilly Media"
+            "Pages": "520"   
+            "Language": "English"   
+}
+]
+}
