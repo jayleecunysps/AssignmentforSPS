@@ -1,21 +1,21 @@
 <Record>
 	<favbook>
-		<title>Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming</title>
-          	<author>Eric Matthes</author>
+		<Title>Python Crash Course, 2nd Edition: A Hands-On, Project-Based Introduction to Programming</Title>
+          	<Author>Eric Matthes</Author>
           	<Publisher>No Starch Press</Publisher>
             <Pages>544</Pages>
             <Language>English</Language>
     	</favbook>
 	<favbook>
-		<title>Python Data Science Handbook: Essential Tools for Working with Data</title>
-          	<author>Jake VanderPlas</author>
+		<Title>Python Data Science Handbook: Essential Tools for Working with Data</Title>
+          	<Author>Jake VanderPlas</Author>
          	 <Publisher>O'Reilly Media</Publisher>
             <Pages>548</Pages>
             <Language>English</Language>
   	</favbook>
  	<favbook>
-		<title>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</title>
-          	<author>Hadley Wickham, Garrett Grolemund</author>
+		<Title>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</Title>
+          	<Author>Hadley Wickham, Garrett Grolemund</Author>
           	<Publisher>O'Reilly Media</Publisher>
             <Pages>520</Pages>
             <Language>English</Language>
