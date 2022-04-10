@@ -1,0 +1,107 @@
+---
+title: "Tidyverse project"
+author: "Jay Lee and Benson Toi"
+date: "4/8/2022"
+output: 
+  html_document:
+     theme: yeti
+     toc: true
+     toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Project details
+
+Our task here is to Create an Example.Using one or more TidyVerse packages, and any dataset from fivethirtyeight.com or Kaggle, create a programming sample “vignette” that demonstrates how to use one or more of the capabilities of the selected TidyVerse package with your selected dataset.
+
+
+URL: https://raw.githubusercontent.com/fivethirtyeight/data/master/hate-crimes/hate_crimes.csv
+
+
+
+# Tidyverse project - prepare the data
+
+## Step 1 Load Library 
+
+We need to load the Library first
+
+Tidyverse has following packages
+
+✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+✓ tibble  3.1.6     ✓ dplyr   1.0.7
+✓ tidyr   1.1.4     ✓ stringr 1.4.0
+✓ readr   2.1.2     ✓ forcats 0.5.1
+
+```{r}
+library(tidyverse)
+```
+
+## Step 2 Load data 
+
+Then we load it into R
+
+```{r data}
+# load data
+
+hate_url<- "https://raw.githubusercontent.com/fivethirtyeight/data/master/hate-crimes/hate_crimes.csv"
+hate_url <-read.csv(hate_url)
+head(hate_url)
+```
+
+## Step 3 add new column with calcalation
+
+We replace the na to 0 and sum the hate crime cases together.
+
+```{r}
+
+haterate <-hate_url %>%
+  replace(is.na(.), 0) %>%
+  mutate(hate_rate_sum_per100k = rowSums(.[11:12]))
+
+head(haterate)
+
+```
+
+# Tidyverse project - use funtion from Tidyverse
+
+## glimpse data
+
+We use glimpse to check the format of the data as well as how many columns and rows.
+
+```{r}
+glimpse(haterate)
+```
+
+
+## Select Data
+
+We select the column that we need when some column is not needed to minimize the size of the data.
+
+```{r}
+haterate <- haterate %>%
+select("state","median_household_income","share_unemployed_seasonal","hate_crimes_per_100k_splc","avg_hatecrimes_per_100k_fbi","hate_rate_sum_per100k")
+head(haterate)
+
+
+```
+
+## create summary 
+
+We create a summary to have a overview of the data, it is helpful to quick check if there is any outliner. 
+
+```{r}
+summary(haterate)
+```
+
+## ggplot
+
+we try to visualize the count of unemployment and hate crimes cases. 
+
+```{r}
+ggplot(haterate, aes(x=hate_rate_sum_per100k)) + geom_histogram(bins = 30) 
+ggplot(haterate, aes(x=share_unemployed_seasonal)) + geom_histogram(bins = 30)
+```
+
